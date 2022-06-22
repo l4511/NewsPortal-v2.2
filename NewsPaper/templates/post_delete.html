@@ -1,0 +1,26 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% block title %} Post {% endblock title %}
+
+{% block content %}
+<h2>Вы действительно хотите удалить данный пост?</h2>
+<table>
+    <thead>
+        <th>Заголовок</th>
+        <th>Дата</th>
+        <th>Содержание</th>
+    </thead>
+    <tr>
+        <td>{{ post.post_title }}</td>
+        <td>{{ post.post_time_create|title }}</td>
+        <td>{{ post.post_text }}</td>
+    </tr>
+</table>
+
+<form method="POST">
+    {% csrf_token %}
+    <input type="submit" value="подтвердить"></form>
+
+<form action="{% url 'post' post.id %}"><button>Отмена</button></form>
+{% endblock content %}
+

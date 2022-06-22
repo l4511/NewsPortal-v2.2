@@ -1,0 +1,29 @@
+{% extends 'flatpages/default.html' %}
+
+{% load custom_filters %}
+
+{% load custom_tags %}
+
+{% block title %}Post{% endblock title %}
+
+{% block content %}
+<h5>Автор : {{ post.post_author }}</h5>
+<br>
+<h5>Дата публикации :{{ post.post_time_create }}</h5>
+<hr>
+<h5> {{ post.post_title | censor}}.</h5>
+<br>
+<h5> {{ post.post_text | censor }}</h5>
+<hr>
+<h5> Оценка статьи : {{ post.post_rating }}</h5>
+
+<body>
+  <form action="{% url 'post_update' post.id %}">
+   <button>Редактировать</button>
+  </form>
+  <form action="{% url 'post_delete' post.id %}">
+   <button>Удалить</button>
+  </form>
+ </body>
+
+{% endblock content %}

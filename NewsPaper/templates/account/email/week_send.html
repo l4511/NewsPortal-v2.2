@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+{{ request.user }} Список новостей категории <b>"{{cat}}"</b> за неделю:
+        <br>
+<table>
+    {% for post in posts %}
+    {% if cat in post.category.all%}
+    <tr>
+        <td>{{post.header}} -></td>
+        <td><a href="http://127.0.0.1:8000/news/{{ post.id }}">Нажми, чтобы перейти</a></td>
+        <td> Краткое содержание:</td></p>
+    <br>
+    {{post.text|truncatechars:50}}
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+</body>
+</html>

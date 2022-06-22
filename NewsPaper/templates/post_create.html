@@ -1,0 +1,12 @@
+{% extends 'flatpages/default.html' %}
+{% load custom_filters %}
+{% block title %} Post {% endblock title %}
+
+{% block content %}
+<h3>Информация о посте</h3>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit" value="Запостить">
+</form>
+{% endblock content %}
